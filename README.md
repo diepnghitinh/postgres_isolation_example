@@ -7,16 +7,12 @@ A transaction reads data written by a concurrent uncommitted transaction.
 
 ## Nonrepeatable read
 ```
-A transaction re-reads data it has previously read and finds that data has been modified by another transaction (that committed since the initial read).
-```
-
-```
 Trường hợp này xảy ra khi 1 transaction A đọc 1 đơn vị dữ liệu nhiều lần và kết quả khác nhau giữa các lần do giữa thời gian đọc của các lần đó, dữ liệu bị 1 transaction khác commit thay đổi.
 ```
 
 ## Phantom read
 ```
-A transaction re-executes a query returning a set of rows that satisfy a search condition and finds that the set of rows satisfying the condition has changed due to another recently committed transaction.
+xảy ra khi 2 queries giống hết nhau được thực hiện nhưng list rows kết quả trả về lại khác nhau. Ví dụ, có 2 transaction được thực thi cùng lúc. Hai câu lệnh SELECT trong transaction đầu tiên có thể trả về các kết quả khác nhau vì câu lệnh INSERT trong transaction thứ hai thay đổi dữ liệu được sử dụng bởi cả hai.
 ```
 ````
 --Transaction 1  
