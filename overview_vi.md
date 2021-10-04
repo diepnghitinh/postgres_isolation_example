@@ -1,9 +1,9 @@
 # Isolation Levels / Mức độ độc lập
 + Isolation levels là các mức cô lập dữ liệu. Mỗi transaction được chỉ định 1 isolation level để chỉ định mức độ mà nó phải được cách ly khỏi các sự sửa đổi dữ liệu được thực hiện bởi các transaction khác.
 + Các Isolation levels kiểm soát :
-  Lock có được sử dụng khi dữ liệu được đọc hay không và loại Lock được sử dụng.
-  Read lock tồn tại bao lâu?
-  Liệu 1 thao tác đọc tham chiếu đến các hàng có thể được sửa bởi 1 transaction khác hay không?
+  + Lock có được sử dụng khi dữ liệu được đọc hay không và loại Lock được sử dụng.
+  + Read lock tồn tại bao lâu?
+  + Liệu 1 thao tác đọc tham chiếu đến các hàng có thể được sửa bởi 1 transaction khác hay không?
 + Mức độ cô lập dữ liệu thấp giúp tăng khả năng xử lý đồng thời từ đó hiệu suất cũng tăng theo nhưng nó sẽ làm tăng nguy cơ xảy ra các tác động xấu đã nêu ở phần trước.
 + Tùy từng hoàn cảnh, môi trường và yêu cầu của ứng dụng, ta chọn lựa các mức cô lập dữ liệu phù hợp nhất.
 + SQL cung cấp các mức isolation levels sau xếp theo thứ tự tăng dần của mức độ cô lập của dữ liệu: Read Uncommitted, Read Commited, Repeatable Read, Serializable, Snapshot
