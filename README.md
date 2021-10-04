@@ -11,7 +11,7 @@ A transaction re-reads data it has previously read and finds that data has been 
 ```
 
 ```
-Trường hợp này xảy ra khi 1 transaction A đọc 1 đơn vị dữ liệu nhiều lần và kết quả khác nhau giữa các lần do giữa thời gian đọc của các lân đó, dữ liệu bị 1 transaction khác commit thay đổi.
+Trường hợp này xảy ra khi 1 transaction A đọc 1 đơn vị dữ liệu nhiều lần và kết quả khác nhau giữa các lần do giữa thời gian đọc của các lần đó, dữ liệu bị 1 transaction khác commit thay đổi.
 ```
 
 ## Phantom read
