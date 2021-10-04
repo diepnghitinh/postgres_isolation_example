@@ -10,3 +10,4 @@
 	The result of successfully committing a group of transactions is inconsistent with all possible orderings of running those transactions one at a time.
 
 https://www.postgresql.org/docs/current/transaction-iso.html
+https://www.postgresql.org/docs/9.1/explicit-locking.html
