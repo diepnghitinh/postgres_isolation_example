@@ -2,7 +2,7 @@
 
 ## Dirty read
 
-A transaction reads data written by a concurrent uncommitted transaction.
+Một transaction đọc dữ liệu được ghi bởi một transaction khác không được commit.
 
 
 ## Nonrepeatable read
