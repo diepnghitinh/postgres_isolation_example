@@ -18,7 +18,7 @@ Trường hợp này xảy ra khi 1 transaction A đọc 1 đơn vị dữ liệ
 ```
 A transaction re-executes a query returning a set of rows that satisfy a search condition and finds that the set of rows satisfying the condition has changed due to another recently committed transaction.
 ```
-<code>
+````
 --Transaction 1  
 BEGIN TRAN;  
 SELECT ID FROM dbo.employee  
@@ -27,15 +27,15 @@ WHERE ID > 5 and ID < 10;
 SELECT ID FROM dbo.employee  
 WHERE ID > 5 and ID < 10;  
 COMMIT;
-</code>
+````
 
-<code>
+````
 --Transaction 2  
 BEGIN TRAN;  
 INSERT INTO dbo.employee  
  (Id, Name) VALUES(6 ,'New');  
 COMMIT;
-</code>
+````
 
 ## Serialization anomaly
 
