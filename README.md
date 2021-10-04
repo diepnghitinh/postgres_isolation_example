@@ -40,3 +40,5 @@ The result of successfully committing a group of transactions is inconsistent wi
 https://www.postgresql.org/docs/current/transaction-iso.html
 
 https://www.postgresql.org/docs/9.1/explicit-locking.html
+
+https://en.wikipedia.org/wiki/Isolation_%28database_systems%29#Non-repeatable_reads
