@@ -1,19 +1,19 @@
 # postgres_isolation_example
 
 ## Dirty read
-```
+
 A transaction reads data written by a concurrent uncommitted transaction.
-```
+
 
 ## Nonrepeatable read
-```
+
 Trường hợp này xảy ra khi 1 transaction A đọc 1 đơn vị dữ liệu nhiều lần và kết quả khác nhau giữa các lần do giữa thời gian đọc của các lần đó, dữ liệu bị 1 transaction khác commit thay đổi.
-```
+
 
 ## Phantom read
-```
+
 xảy ra khi 2 queries giống hết nhau được thực hiện nhưng list rows kết quả trả về lại khác nhau. Ví dụ, có 2 transaction được thực thi cùng lúc. Hai câu lệnh SELECT trong transaction đầu tiên có thể trả về các kết quả khác nhau vì câu lệnh INSERT trong transaction thứ hai thay đổi dữ liệu được sử dụng bởi cả hai.
-```
+
 ````
 --Transaction 1  
 BEGIN TRAN;  
@@ -35,9 +35,7 @@ COMMIT;
 
 ## Serialization anomaly
 
-```
 The result of successfully committing a group of transactions is inconsistent with all possible orderings of running those transactions one at a time.
-```
 
 https://www.postgresql.org/docs/current/transaction-iso.html
 
