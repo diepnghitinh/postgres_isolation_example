@@ -1,11 +1,12 @@
-# postgres_isolation_example
+# Postgres isolation example & note
 
 * Transaction isolation and read phenomena
-  * [ACID property & 4 isolation levels](acid_isolation_levels.md)
-  * [4 read phenomena](4_read_phenomena.md)
-  * [Relationship between isolation levels and read phenomena](isolation_phenomena.md)
+  * [Chapter 1: ACID property & 4 isolation levels](acid_isolation_levels.md)
+  * [Chapter 2: 4 read phenomena](4_read_phenomena.md)
+  * [Chapter 3: Relationship between isolation levels and read phenomena](isolation_phenomena.md)
 * Others
-  * [Selecting for Share and Update](selecting_for_share_and_update.md)
+  * [Chapter 4: Selecting for Share and Update](selecting_for_share_and_update.md)
+  * [Chapter 5: Postgres Store Procedure](postgres_func.md)
 
 ## Reference
 

@@ -14,9 +14,9 @@ UPDATE purchases SET ...;
 COMMIT;
 ```
 
-Đoạn mã trên có thể là nạn nhân của một điều kiện chạy đua khó chịu. Vấn đề là một số phần khác của ứng dụng có thể cập nhật dữ liệu chưa được xử lý. Sau đó, các thay đổi đối với các hàng đó sẽ được ghi đè khi quá trình xử lý dữ liệu kết thúc.
+Đoạn mã trên có thể là nạn nhân của một điều kiện chạy song song khác. Vấn đề là một số phần khác của ứng dụng có thể cập nhật dữ liệu chưa được xử lý. Sau đó, các thay đổi đối với các hàng đó sẽ được ghi đè khi quá trình xử lý dữ liệu kết thúc.
 
-Đây là một tình huống ví dụ trong đó dữ liệu gặp phải tình trạng chủng tộc xâm nhập.
+Đây là một tình huống ví dụ trong đó dữ liệu gặp phải tình trạng xung đột.
 
 ```
 process A: SELECT * FROM purchases WHERE processed = false;
@@ -26,7 +26,7 @@ process B: UPDATE purchases SET ...;
 process A: UPDATE purchases SET ...;
 ```
 
-Để giảm thiểu vấn đề này, chúng tôi có thể chọn dữ liệu để cập nhật . Đây là một ví dụ về cách chúng tôi sẽ làm điều đó:
+Để giảm thiểu vấn đề này, chúng tôi có thể chọn dữ liệu để cập nhật. Đây là một ví dụ về cách chúng tôi sẽ làm điều đó:
 
 ```
 BEGIN;
@@ -37,7 +37,7 @@ UPDATE purchases SET ...;
 COMMIT;
 ```
 
-Có select ... for update ta có được một ROW SHARE LOCK trên một bảng. Khóa này xung đột với EXCLUSIVE cần thiết cho một câu lệnh update và ngăn bất kỳ thay đổi nào có thể xảy ra đồng thời.
+Có select ... for update ta có được một ROW SHARE LOCK trên một bảng. Khóa này xung đột với EXCLUSIVE (update) cần thiết cho một câu lệnh update và ngăn bất kỳ thay đổi nào có thể xảy ra đồng thời.
 
 ```
 process A: SELECT * FROM purchases WHERE processed = false FOR UPDATE;
@@ -87,7 +87,7 @@ Cả Quy trình A và Quy trình B có thể xử lý dữ liệu đồng thời
 
 ## The Effect of Select For Update on Foreign Keys
 
-Một điều mà chúng ta cần lưu ý khi làm việc với câu lệnh "select for update" là ảnh hưởng của nó đối với các khóa ngoại. Đặc biệt hơn, chúng ta không thể quên rằng các hàng được tham chiếu từ các bảng khác cũng bị khóa.
+Một điều mà chúng ta cần lưu ý khi làm việc với câu lệnh "select for update" là ảnh hưởng của nó đối với các khóa ngoại. Đặc biệt hơn, chúng ta không thể quên rằng các row được tham chiếu từ các bảng khác cũng bị khóa.
 
 Hãy xem một ví dụ với hai bảng - người dùng và lượt mua hàng - với khái niệm rằng người dùng có nhiều lượt mua hàng.
 
@@ -125,7 +125,7 @@ process B: UPDATE users SET name = 'Peter' WHERE id = 1;
 ## Safely Creating Related Records With Select for Share
 Một dạng yếu hơn "select for update" là "select for share". Nó là một lý tưởng để đảm bảo tính toàn vẹn của tham chiếu khi tạo các bản ghi con cho cha mẹ.
 
-Hãy sử dụng bảng users và purchases để chứng minh một trường hợp sử dụng cho truy vấn chọn để chia sẻ. Giả sử rằng chúng tôi muốn tạo một giao dịch mua mới cho một người dùng. Đầu tiên, chúng tôi sẽ chọn người dùng từ cơ sở dữ liệu và sau đó chèn một bản ghi mới vào cơ sở dữ liệu mua hàng. Chúng ta có thể chèn một giao dịch mua mới vào cơ sở dữ liệu một cách an toàn không? Với một câu lệnh chọn thông thường, chúng tôi không thể. Các quy trình khác có thể xóa người dùng trong những khoảnh khắc giữa việc chọn người dùng và chèn giao dịch mua.
+Sử dụng bảng users và purchases để chứng minh một trường hợp sử dụng cho truy vấn "select for share". Giả sử rằng chúng tôi muốn tạo một giao dịch mua mới cho một người dùng. Đầu tiên, chúng tôi sẽ chọn người dùng từ cơ sở dữ liệu và sau đó chèn một bản ghi mới vào cơ sở dữ liệu mua hàng. Chúng ta có thể chèn một giao dịch mua mới vào cơ sở dữ liệu một cách an toàn không? Với một câu lệnh chọn thông thường, chúng tôi không thể. Các quy trình khác có thể xóa người dùng trong những khoảnh khắc giữa việc chọn người dùng và chèn giao dịch mua.
 
 ```
 process A: BEGIN;
