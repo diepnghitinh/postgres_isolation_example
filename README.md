@@ -43,7 +43,15 @@ COMMIT;
 
 ## Serialization anomaly
 
-The result of successfully committing a group of transactions is inconsistent with all possible orderings of running those transactions one at a time.
+Xảy ra khi 2 transaction (có cùng code) cùng chạy 1 lúc, và kết quả đưa vào csdl một record trùng lặp không như mong muốn.
+
+Để chặn serializable anomaly. Ta dùng:
+
+```
+set transaction isolation level serializable;
+```
+
+Sau đó 2 giao dịch đồng thời sau khi commit không còn tạo ra các bản ghi trùng lặp như trước đây nữa.
 
 https://www.postgresql.org/docs/current/transaction-iso.html
 
