@@ -2,7 +2,7 @@
 
 ## Dirty read
 
-Một transaction đọc dữ liệu được ghi bởi một transaction khác chưa commit.
+Một transaction đọc dữ liệu được ghi bởi một transaction khác chưa được commit.
 
 
 ## Nonrepeatable read
@@ -41,4 +41,4 @@ https://www.postgresql.org/docs/current/transaction-iso.html
 
 https://www.postgresql.org/docs/9.1/explicit-locking.html
 
-https://en.wikipedia.org/wiki/Isolation_%28database_systems%29#Non-repeatable_reads
+https://en.wikipedia.org/wiki/Isolation_%28database_systems%29
