@@ -10,8 +10,11 @@
 ## Reference
 
 https://www.postgresql.org/docs/current/transaction-iso.html
+
 https://www.postgresql.org/docs/9.1/explicit-locking.html
+
 https://en.wikipedia.org/wiki/Isolation_%28database_systems%29
 
 https://dev.to/techschoolguru/understand-isolation-levels-read-phenomena-in-mysql-postgres-c2e#serialization-anomaly-in-postgres
+
 http://shiroyasha.io/selecting-for-share-and-update-in-postgresql.html
