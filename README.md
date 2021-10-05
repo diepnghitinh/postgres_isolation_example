@@ -2,7 +2,7 @@
 
 ## Dirty read
 
-Một transaction đọc dữ liệu được ghi bởi một transaction khác không được commit.
+Một transaction đọc dữ liệu được ghi bởi một transaction khác chưa commit.
 
 
 ## Nonrepeatable read
