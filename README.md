@@ -1,6 +1,6 @@
 # postgres_isolation_example
 
-4 read phenomena
+4 read phenomena ( 4 hiện tượng đọc )
 
 ## Dirty read
 
