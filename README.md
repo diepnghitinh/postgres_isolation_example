@@ -1,5 +1,7 @@
 # postgres_isolation_example
 
+4 read phenomena
+
 ## Dirty read
 
 Một transaction đọc dữ liệu được ghi bởi một transaction khác chưa được commit.
