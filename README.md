@@ -1,5 +1,12 @@
 # postgres_isolation_example
 
+* Transaction isolation and read phenomena
+ + ACID property & 4 isolation levels
+ + 4 read phenomena
+ + Relationship between isolation levels and read phenomena
+* Isolation levels in Postgres
+ + 
+
 4 read phenomena ( 4 hiện tượng đọc )
 
 ## Dirty read
