@@ -2,6 +2,6 @@
 
 ![Screenshot](images/isolation_phenomena.png)
 
-In PostgreSQL, you can request any of the four standard transaction isolation levels, but internally only three distinct isolation levels are implemented, i.e., PostgreSQL's Read Uncommitted mode behaves like Read Committed. This is because it is the only sensible way to map the standard isolation levels to PostgreSQL's multiversion concurrency control architecture.
+Trong PostgreSQL, bạn có thể yêu cầu bất kỳ mức cô lập giao dịch tiêu chuẩn nào trong bốn mức, nhưng về mặt nội bộ, chỉ có ba mức cô lập khác biệt được triển khai. Cụ thể, chế độ Read Uncommitted của PostgreSQL hoạt động giống như Read Committed. Điều này là do đây là cách hợp lý duy nhất để ánh xạ các mức cô lập tiêu chuẩn vào kiến trúc kiểm soát đồng thời đa phiên bản (MVCC) của PostgreSQL.
 
-The table also shows that PostgreSQL's Repeatable Read implementation does not allow phantom reads. Stricter behavior is permitted by the SQL standard: the four isolation levels only define which phenomena must not happen, not which phenomena must happen. The behavior of the available isolation levels is detailed in the following subsections.
+Bảng cũng cho thấy rằng triển khai Repeatable Read của PostgreSQL không cho phép xảy ra phantom reads. Tiêu chuẩn SQL cho phép hành vi nghiêm ngặt hơn: bốn mức cô lập chỉ xác định các hiện tượng không được xảy ra, chứ không xác định các hiện tượng phải xảy ra. Hành vi của các mức cô lập có sẵn sẽ được trình bày chi tiết trong các phần tiếp theo.
